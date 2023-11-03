@@ -3,6 +3,12 @@ My Personal Website
 
 ## Setup Instructions
 
+```
+cd website
+virtualenv venv
+pip install requirements.txt
+```
+
 ## Goals
 - Static Site that can be hosted on Github Pages
 - Use Jinja2 for templating
