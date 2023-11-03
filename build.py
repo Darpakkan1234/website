@@ -156,3 +156,7 @@ with open("./dist/js/router.js", "w") as file:
     file.write(rendered_router)
 
 print("\nNo Build Errors!............\n")
+
+
+# Copy dist folder to docs for github pages hosting
+shutil.copytree("./dist", "./docs", dirs_exist_ok=True)
