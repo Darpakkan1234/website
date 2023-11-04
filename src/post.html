@@ -1,1 +1,11 @@
-<h1>POST</h1>
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>{{post.title}}</h1>
+
+<h2>{{ post.date }}</h2>
+
+{{ post.content }}
+
+{% endblock %}

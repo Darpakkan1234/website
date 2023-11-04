@@ -6,10 +6,15 @@ import jinja2
 import markdown
 import shutil
 from jinja2 import Environment, FileSystemLoader
+from flask import Flask, render_template, send_from_directory
 
+# Initialize Flask app
+app = Flask(__name__, template_folder="docs")
 
+# Initialize Jinja2 environment
 env = Environment(loader=FileSystemLoader("./src"))
 
+# Configure the logging
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -18,14 +23,14 @@ logging.basicConfig(
 
 logger = logging.getLogger("website")
 
-# Some Paths
+# Define file paths
 data_path = "./src/_site/data.yaml"
 posts_path = "./src/_posts"
 src = "./src"
 home_path = "./src/_site/home.md"
 about_path = "./src/_site/about.md"
 
-# Read the data.yaml
+# Read data from data.yaml
 site_config = None
 try:
     with open(data_path, "r") as file:
@@ -66,48 +71,45 @@ try:
 except Exception as e:
     logger.error("Failed to load about.md: %s", str(e))
 
-# Copy js folder to dist
-shutil.copytree("./src/js", "./dist/js", dirs_exist_ok=True)
+# Copy js folder to docs
+shutil.copytree("./src/js", "./docs/js", dirs_exist_ok=True)
+logger.debug("js folder copied to docs")
 
-# Build index in dist
+# Build index in docs
 page_index = None
 with open("./src/index.html", "r") as file:
     page_index = file.read()
 
 template_index = env.from_string(page_index)
-rendered_index = template_index.render()
+rendered_index = template_index.render(home=markdown.markdown(home.content))
 
-with open("./dist/index.html", "w") as file:
+with open("./docs/index.html", "w") as file:
     file.write(rendered_index)
-with open("./dist/404.html", "w") as file:
+    logger.debug("index.html successfully built and saved")
+
+with open("./docs/404.html", "w") as file:
     file.write(rendered_index)
+    logger.debug("404.html successfully built and saved")
 
-# Build home in dist
-page_home = None
-with open("./src/home.html", "r") as file:
-    page_home = file.read()
-
-template_home = env.from_string(page_home)
-rendered_home = template_home.render()
-
-with open("./dist/home.html", "w") as file:
-    file.write(rendered_home)
-
-
-# Build about in dist
+# Build about in docs
 page_about = None
 with open("./src/about.html", "r") as file:
     page_about = file.read()
+    logger.debug("about.html content loaded")
 
 template_about = env.from_string(page_about)
-rendered_about = template_about.render()
+rendered_about = template_about.render(about=markdown.markdown(about.content))
+logger.debug("about.html content rendered")
 
-with open("./dist/about.html", "w") as file:
+with open("./docs/about.html", "w") as file:
     file.write(rendered_about)
+    logger.debug("about.html successfully built and saved")
 
-# Build blog in dist
+
+# Build blog in docs
 page_blog = None
 post_keys = []
+
 for i in posts:
     input_string = [a for a in i.keys()][0]
     post_keys.append(
@@ -117,46 +119,63 @@ for i in posts:
             .split("-", 3)[-1]
             .replace("-", " "),
             "-".join(input_string.split("/")[-1].split(".md")[0].split("-")[:3][::-1]),
+            input_string,
         )
     )
-# print(post_keys)
+
+logger.debug("Post keys generated")
+
+
+def get_postcontent(path):
+    with open(path, "r") as file:
+        return markdown.markdown(frontmatter.load(file).content)
+
+
 post_data = [
     {
         "title": pk[0],
         "date": pk[1],
-        "slug": pk[0].replace(" ", "_"),
+        "slug": pk[0].replace(" ", "-"),
+        "content": get_postcontent(pk[2]),
     }
     for pk in post_keys
 ]
 
-# print(post_data)
+logger.debug("Post data generated")
 
 with open("./src/blog.html", "r") as file:
     page_blog = file.read()
+    logger.debug("blog.html content loaded")
 
 template_blog = env.from_string(page_blog)
 rendered_blog = template_blog.render(posts=post_data)
 
-with open("./dist/blog.html", "w") as file:
+with open("./docs/blog.html", "w") as file:
     file.write(rendered_blog)
+    logger.debug("blog.html successfully built and saved")
 
-# Render home, about, blog into router.js in dist
-page_router = None
-with open("./src/js/router.js", "r") as file:
-    page_router = file.read()
+logger.info("No Build Errors!............")
 
-template_router = env.from_string(page_router)
-rendered_router = template_router.render(
-    home=markdown.markdown(home.content),
-    about=markdown.markdown(about.content),
-    blog=rendered_blog,
-)
+# Build each post
+with open("./src/post.html", "r") as file:
+    page_post = file.read()
+    template_post = env.from_string(page_post)
 
-with open("./dist/js/router.js", "w") as file:
-    file.write(rendered_router)
-
-print("\nNo Build Errors!............\n")
+for post in post_data:
+    rendered_post = template_post.render(post=post)
+    post_slug = post["slug"]
+    with open(f"./docs/{post_slug}.html", "w") as file:
+        file.write(rendered_post)
+        logger.debug(f"{post_slug}.html successfully built and saved")
 
 
-# Copy dist folder to docs for github pages hosting
-shutil.copytree("./dist", "./docs", dirs_exist_ok=True)
+# Start the dev server
+@app.route("/")
+@app.route("/<route>")
+def serve_html(route="index"):
+    return render_template(f"{route}.html")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+    logger.debug("Development server started")
