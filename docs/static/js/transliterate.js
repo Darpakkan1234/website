@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Create a new visible <p> element
         visibleElement = document.createElement("p");
+        visibleElement.classList.add("transliterated_text");
         element.parentElement.insertBefore(visibleElement, element.nextSibling);
 
         // Replace '<br>' with a placeholder (e.g., '<<br>>')

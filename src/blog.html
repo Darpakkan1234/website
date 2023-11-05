@@ -4,9 +4,9 @@
 <h1 class="text-3xl font-bold mb-4">BLOG</h1>
 <ul class="list-disc pl-6">
     {% for post in posts %}
-    <li class="mb-2">
+    <li class="mb-2 flex justify-between p-10">
         <a href="/{{ post.slug }}" class="text-blue-600 hover:underline">{{ post.title }}</a>
-        <span class="text-gray-500">({{ post.date }})</span>
+        <span class="text-gray-500">{{ post.date }}</span>
     </li>
     {% endfor %}
 </ul>

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h1 class="text-3xl font-bold">{{ post.title }}</h1>
-<h2 class="text-gray-600 text-sm">{{ post.date }}</h2>
-<div class="mt-4 prose max-w-full">
+<h1>{{ post.title }}</h1>
+<div class="date">{{ post.date }}</div>
+<div class="postContent">
     {{ post.content | safe }}
 </div>
 {% endblock %}

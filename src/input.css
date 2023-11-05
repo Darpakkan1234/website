@@ -4,11 +4,105 @@
 
 @layer components {
 
+    p {
+        @apply p-5 pb-0;
+    }
+
+    div {
+        @apply font-mono text-gray-800;
+    }
+
+    html {
+        @apply select-none;
+        @apply bg-gray-300;
+        @apply font-mono font-normal text-gray-600;
+        font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    }
+
+    .transliterated_text {
+        @apply p-10 block w-fit bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700;
+        margin: 0 auto;
+    }
+
+    .postContent {
+        @apply p-10 mt-10 mx-auto;
+        @apply text-xl text-center;
+        @apply w-fit h-fit m-10;
+        margin: 0 auto;
+    }
+
+    .postContent h1,
+    .postContent h2,
+    .postContent h3,
+    .postContent ol,
+    .postContent ul,
+    .postContent p {
+        @apply text-left;
+    }
+
+
+
+    .headerDiv {
+        @apply bg-gray-500 pt-3 pb-2 flex flex-col justify-center md:flex-row items-stretch;
+    }
+
+    .header {
+        @apply w-full flex order-last flex-row justify-start md:justify-end;
+    }
+
+    a {
+        @apply px-10 text-gray-200 hover:font-bold;
+    }
+
+    .transliterationDropdownDiv {
+        @apply pt-0.5 pr-0 ml-2 w-full order-first md:w-fit;
+    }
+
+    #transliterationDropdown {
+        @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+        @apply py-1 px-2 m-0;
+    }
+
+    .date {
+        @apply text-center pt-0 mt-0;
+    }
+
     h1 {
-        @apply text-black italic;
+        @apply text-4xl font-semibold text-center font-mono p-10 text-gray-800;
+    }
+
+    h2 {
+        @apply text-3xl font-mono p-10 text-gray-700;
+    }
+
+    h3 {
+        @apply text-2xl font-mono p-10 text-gray-600;
+    }
+
+    h4 {
+        @apply text-xl font-mono p-10 text-gray-500;
+    }
+
+    h5 {
+        @apply text-lg font-mono p-10 text-gray-400;
+    }
+
+    h6 {
+        @apply text-base font-mono p-10 text-gray-300;
+    }
+
+    ol {
+        @apply list-decimal list-inside font-mono;
+        @apply p-10;
+    }
+
+    ul {
+        @apply list-disc list-inside font-mono;
+        @apply p-10;
     }
 
     .sanscript {
         @apply hidden;
     }
+
 }

@@ -2,6 +2,7 @@
 <html lang="en" class="text-gray-900 bg-white font-serif">
 
 <head>
+    <title>Darpakkan</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./static/css/main.css" rel="stylesheet">
@@ -9,31 +10,34 @@
     <script type="module" src="static/js/sanscript.js"></script>
     <script type="module" src="static/js/transliterate.js"></script>
     
-    <header class="bg-blue-500 py-4">
-        <nav class="flex justify-center space-x-6">
-            <a href="/" class="text-white hover:underline">Home</a>
-            <a href="/blog" class="text-white hover:underline">Blog</a>
-            <a href="/about" class="text-white hover:underline">About</a>
-        </nav>
-    </header>
-    <select id="transliterationDropdown">
-        <option value="devanagari">Devanagari</option>
-        <option value="hk">Harvard-Kyoto</option>
-        <option value="bengali">Bengali</option>
-        <option value="gujarati">Gujarati</option>
-        <option value="gurmukhi">Gurmukhi</option>
-        <option value="kannada">Kannada</option>
-        <option value="malayalam">Malayalam</option>
-        <option value="oriya">Oriya</option>
-        <option value="telugu">Telugu</option>
-        <option value="iast">International Alphabet of Sanskrit Transliteration</option>
-        <option value="itrans">ITRANS</option>
-        <option value="itrans_dravidian">ITRANS with support for Dravidian short "e" and "o"</option>
-        <option value="kolkata">National Library at Kolkata</option>
-        <option value="slp1">Sanskrit Library Phonetic Basic</option>
-        <option value="velthuis">Velthuis</option>
-        <option value="wx">WX</option>
-    </select>
+    <div class="headerDiv">
+        <div class="transliterationDropdownDiv">
+            <select id="transliterationDropdown" class="transliterationDropdown">
+                <option value="devanagari">Devanagari</option>
+                <option value="hk">Harvard-Kyoto</option>
+                <option value="bengali">Bengali</option>
+                <option value="gujarati">Gujarati</option>
+                <option value="gurmukhi">Gurmukhi</option>
+                <option value="kannada">Kannada</option>
+                <option value="malayalam">Malayalam</option>
+                <option value="oriya">Oriya</option>
+                <option value="telugu">Telugu</option>
+                <option value="tamil">Tamil</option>
+                <option value="iast">International Alphabet of Sanskrit Transliteration</option>
+                <option value="itrans">ITRANS</option>
+                <option value="itrans_dravidian">ITRANS with support for Dravidian short "e" and "o"</option>
+                <option value="kolkata">National Library at Kolkata</option>
+                <option value="slp1">Sanskrit Library Phonetic Basic</option>
+                <option value="velthuis">Velthuis</option>
+                <option value="wx">WX</option>
+            </select>
+        </div>
+        <div class="header">
+            <a href="/">Home</a>
+            <a href="/blog">Blog</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
     
 </head>
 
@@ -47,9 +51,9 @@
 <h1 class="text-3xl font-bold mb-4">BLOG</h1>
 <ul class="list-disc pl-6">
     
-    <li class="mb-2">
+    <li class="mb-2 flex justify-between p-10">
         <a href="/First-Post" class="text-blue-600 hover:underline">First Post</a>
-        <span class="text-gray-500">(2023-10-30)</span>
+        <span class="text-gray-500">2023-10-30</span>
     </li>
     
 </ul>
