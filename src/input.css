@@ -51,7 +51,7 @@
     }
 
     a {
-        @apply px-10 text-gray-200 hover:font-bold;
+        @apply py-10 px-14 text-gray-200 text-xl hover:font-bold md:py-0;
     }
 
     .transliterationDropdownDiv {
