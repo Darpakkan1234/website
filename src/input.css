@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
 
-@layer base {
     h1 {
-        @apply text-2xl;
+        @apply text-black italic;
     }
 
-    h2 {
-        @apply text-xl;
+    .sanscript {
+        @apply hidden;
     }
 }

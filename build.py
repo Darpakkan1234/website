@@ -2,14 +2,14 @@ import yaml
 import frontmatter
 import logging
 import os
-import jinja2
 import markdown
 import shutil
 from jinja2 import Environment, FileSystemLoader
 from flask import Flask, render_template, send_from_directory
 
 # Initialize Flask app
-app = Flask(__name__, template_folder="docs")
+app = Flask(__name__, template_folder=".", static_folder="./static")
+app.root_path = app.root_path + "/docs"
 
 # Initialize Jinja2 environment
 env = Environment(loader=FileSystemLoader("./src"))
@@ -22,6 +22,15 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger("website")
+
+docs_folder_path = "./docs"
+# Check if the /docs folder exists
+if os.path.exists(docs_folder_path):
+    # Remove the /docs folder and its contents
+    shutil.rmtree(docs_folder_path)
+    logger.debug(f"The {docs_folder_path} directory has been deleted.")
+else:
+    logger.debug(f"The {docs_folder_path} directory does not exist.")
 
 # Define file paths
 data_path = "./src/_site/data.yaml"
@@ -71,9 +80,9 @@ try:
 except Exception as e:
     logger.error("Failed to load about.md: %s", str(e))
 
-# Copy js folder to docs
-shutil.copytree("./src/js", "./docs/js", dirs_exist_ok=True)
-logger.debug("js folder copied to docs")
+# Copy static folders/files to docs
+shutil.copytree("./src/static", "./docs/static", dirs_exist_ok=True)
+logger.debug("static files copied to docs")
 
 # Build index in docs
 page_index = None
@@ -177,5 +186,5 @@ def serve_html(route="index"):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
     logger.debug("Development server started")
+    app.run(debug=True)
