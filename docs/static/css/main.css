@@ -544,6 +544,9 @@ html {
   font-weight: 400;
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+       text-size-adjust: 100%;
   font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
@@ -716,6 +719,8 @@ a:not(.post_title) {
     border-color: rgb(55 65 81 / var(--tw-border-opacity));
     --tw-bg-opacity: 1;
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 }
 
@@ -731,6 +736,7 @@ a:not(.post_title) {
 
 .transliterated_text {
   margin-inline-end: 0px;
+  margin-bottom: 1.25rem;
 }
 
 @media (min-width: 768px) {
@@ -778,9 +784,7 @@ p {
   padding-bottom: 1.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   line-height: 1.625;
   --tw-text-opacity: 1;
   color: rgb(28 25 23 / var(--tw-text-opacity));
@@ -833,8 +837,6 @@ ol {
   list-style-position: inside;
   list-style-type: decimal;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 ul {
@@ -843,8 +845,6 @@ ul {
   list-style-position: inside;
   list-style-type: disc;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .posts_ul {
@@ -885,6 +885,37 @@ a.post_title:hover {
 .post_date {
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+code {
+  display: inline-flex;
+  align-items: center;
+}
+
+code > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+code {
+  border-radius: 0.5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+  padding: 1rem;
+  padding-left: 1.5rem;
+  text-align: left;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 640px) {
+  code {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }
 
 .visible {

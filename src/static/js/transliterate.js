@@ -2,6 +2,7 @@ import './sanscript.js';
 
 // Default target scheme
 var defaultTargetScheme = "devanagari";
+var defaultSourceScheme = "hk"
 
 // Function to get the selected scheme from local storage
 function getSelectedScheme() {
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var converted = [];
 
         for (var j = 0; j < parts.length; j++) {
-            converted.push(Sanscript.t(parts[j], "hk", toScheme));
+            converted.push(Sanscript.t(parts[j], defaultSourceScheme, toScheme));
         }
 
         // Join the parts with '<<br>>' elements

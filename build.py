@@ -150,6 +150,9 @@ post_data = [
     for pk in post_keys
 ]
 
+post_data = sorted(post_data, key=lambda x: x["date"], reverse=True)
+
+
 logger.debug("Post data generated")
 
 with open("./src/blog.html", "r") as file:
