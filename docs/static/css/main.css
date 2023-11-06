@@ -673,7 +673,7 @@ a:not(.post_title) {
   margin-bottom: 0.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  padding-left: 1.25rem;
+  padding-left: 0.5rem;
 }
 
 @media (min-width: 768px) {
@@ -888,6 +888,7 @@ a.post_title:hover {
 }
 
 code {
+  margin: auto;
   display: inline-flex;
   align-items: center;
 }
