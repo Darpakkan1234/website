@@ -57,12 +57,8 @@
         @apply me-0 md:mx-auto;
     }
 
-    #root {
-        @apply flex flex-col;
-    }
-
     #main {
-        @apply order-3 px-4 me-0 mr-auto py-2 md:py-10;
+        @apply mx-auto w-3/5;
     }
 
     h1.heading {
@@ -75,7 +71,7 @@
 
     p {
         @apply w-fit;
-        @apply mx-auto p-5 text-lg text-stone-900 font-serif leading-relaxed;
+        @apply me-0 py-5 px-3 text-lg text-stone-900 font-serif leading-relaxed;
     }
 
     h1 {
@@ -111,7 +107,7 @@
     }
 
     a.post_title {
-        @apply m-0 w-fit text-blue-600 hover:underline font-semibold;
+        @apply w-fit justify-between text-blue-600 hover:underline font-semibold;
     }
 
     .post_date {
