@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h1 class="text-3xl font-bold mb-4">BLOG</h1>
-<ul class="list-disc pl-6">
+<h1 class="heading">BLOG</h1>
+<ul class="posts_ul">
     {% for post in posts %}
-    <li class="mb-2 flex justify-between p-10">
-        <a href="/{{ post.slug }}" class="text-blue-600 hover:underline">{{ post.title }}</a>
-        <span class="text-gray-500">{{ post.date }}</span>
+    <li class="post_li">
+        <a href="/{{ post.slug }}" class="post_title">{{ post.title }}</a>
+        <span class="post_date">{{ post.date }}</span>
     </li>
     {% endfor %}
 </ul>
