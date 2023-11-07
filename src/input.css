@@ -54,9 +54,9 @@
     }
 
     .transliterated_text {
-        @apply p-2 block w-fit bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700;
+        @apply p-2 block min-w-fit bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700;
         @apply md:p-10 md:px-20 md:text-2xl dark:text-white;
-        @apply me-0 md:mx-auto mb-5;
+        @apply me-0 md:mx-auto my-5;
     }
 
     #main {
@@ -74,6 +74,7 @@
     p {
         @apply w-fit;
         @apply me-0 py-5 px-3 text-stone-900 font-mono leading-relaxed;
+        @apply my-2;
     }
 
     h1 {
@@ -90,6 +91,10 @@
 
     h4 {
         @apply py-5 text-stone-900 font-mono;
+    }
+
+    hr {
+        @apply m-2;
     }
 
     ol {

@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function transliterateText(element, toScheme) {
         var originalText = element.innerHTML;
 
-        // Check if a visible <p> element already exists and remove it
+        // Check if a visible <p> element with class "transliterated_text" already exists and remove it
         var visibleElement = element.nextElementSibling;
-        if (visibleElement && visibleElement.tagName === "P") {
+        if (visibleElement && visibleElement.tagName === "P" && visibleElement.classList.contains("transliterated_text")) {
             visibleElement.remove();
         }
 
-        // Create a new visible <p> element
+        // Create a new visible <p> element with the class "transliterated_text"
         visibleElement = document.createElement("p");
         visibleElement.classList.add("transliterated_text");
         element.parentElement.insertBefore(visibleElement, element.nextSibling);
