@@ -115,6 +115,7 @@ with open("./docs/about.html", "w") as file:
     logger.debug("about.html successfully built and saved")
 
 
+
 # Build blog in docs
 page_blog = None
 post_keys = []
