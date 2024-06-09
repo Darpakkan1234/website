@@ -14,15 +14,16 @@
     }
 
     a {
-        @apply m-0;
+        @apply m-0 text-blue-600 italic underline  mx-auto hover:text-green-600;
     }
 
     .headerDiv {
         @apply sticky top-0;
-        @apply w-full;
         @apply flex flex-col items-stretch justify-start md:justify-between md:flex-row md:items-stretch;
-        @apply bg-slate-200 pb-3;
-        @apply border-gray-500 border-b-2;
+        @apply bg-red-400 pb-3;
+        @apply border-red-500 border-2;
+        @apply rounded-lg m-1 mr-2;
+        @apply z-50 shadow-lg;
     }
 
     .header {
@@ -43,6 +44,7 @@
         @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
         @apply py-1 mt-3 mb-2 pl-2 md:w-fit;
         @apply mx-auto w-1/2;
+        @apply border-red-950 border-2;
     }
 
     .root {
@@ -64,7 +66,7 @@
     }
 
     h1.heading {
-        @apply my-5 text-4xl text-gray-950 font-mono font-semibold pb-2 text-center;
+        @apply my-5 text-4xl text-red-950 font-mono font-semibold pb-2 text-center;
     }
 
     .date {
@@ -78,7 +80,7 @@
     }
 
     h1 {
-        @apply mx-auto text-4xl text-gray-950 font-mono py-2 text-center;
+        @apply mx-auto text-4xl text-red-950 font-mono py-2 text-center;
     }
 
     h2 {
@@ -125,4 +127,7 @@
         @apply m-auto text-sm sm:text-base inline-flex text-left items-center space-x-4 bg-gray-800 text-white rounded-lg p-4 pl-6;
     }
 
+    img {
+        @apply rounded-lg shadow-sm border-gray-400 border-2 my-4
+    }
 }

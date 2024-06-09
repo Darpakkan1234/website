@@ -14,11 +14,17 @@ description: null
 
 ---
 
+# Welcome!
+
 Now that a site is made, I have to think of what to say. Don't have anything just yet but let's see.....
 
-Well, don't have anything more to say.
+Leaving some Golden Words so your time wasn't completely wasted:
 
-Ending with some Golden Words:
-_Hope you do not waste much of your time here on this useless website._
+<u>
+_“Where there's life there's hope."_
+_- J.R.R. Tolkien, The Hobbit_
+</u>
+
+_Namárie_ 
 
 ---

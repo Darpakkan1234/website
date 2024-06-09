@@ -190,4 +190,5 @@ def serve_html(route="index"):
 
 if __name__ == "__main__":
     logger.debug("Development server started")
-    app.run(debug=True)
+    logger.debug("Running @ port no: 8080 ....")
+    app.run(debug=True, port=8080)

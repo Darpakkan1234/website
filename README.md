@@ -31,6 +31,12 @@ pip install requirements.txt
 python build.py
 ```
 
+In another terminal, compile the tailwind css:
+```
+npx 
+tailwindcss -i ./src/input.css -o ./docs/static/css/main.css --watch
+```
+
 Stop the devserver if you want to rerun the build after changing some files. (I really gotta do this better sometime)
 
 ## Goals
